@@ -1,0 +1,7 @@
+{
+  "name": "Ionic7Cap",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
