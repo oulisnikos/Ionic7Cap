@@ -1,7 +1,10 @@
 {
   "name": "Ionic7Cap",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {
+      "enabled": false
+    },
+    "cordova": {}
   },
   "type": "angular"
 }

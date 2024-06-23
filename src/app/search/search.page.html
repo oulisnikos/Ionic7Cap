@@ -1,0 +1,63 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Search Line or Stops
+    </ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar [debounce]="500" (ionInput)="handleInput($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="border: 2px solid brown;" [scrollEvents]="true">
+  <div *ngIf="!searching" style="overflow-x:auto; display: flex; height: auto;">
+    <ion-button>
+      Ναυρίνου
+    </ion-button>
+    <ion-button>
+      <ion-icon name="bus-outline"></ion-icon>
+      <ion-label>Αραχώβης</ion-label>
+    </ion-button>
+    <ion-button>
+      022 ακαδημία - Ν. Κυψέλη (Από Κυψέλη)
+    </ion-button>
+    <ion-button>
+      <ion-label>137 Άνω Νέα Σμύρνη - Στ. Συγγρού Φίξ (Κυκλική)</ion-label>
+    </ion-button>
+  </div>
+  <div style="border-radius: 20px; overflow: hidden;">
+    <ion-list-header *ngIf="!searching"  style="padding: 0;" color="primary">
+        <h4 style="margin: 10px 0;width: 100%; text-align: center;">Όλες οι γραμμές</h4>
+    </ion-list-header>
+    <ion-list mode="ios" class="myList">
+      <ion-item *ngFor="let ln of lines;">
+        <div style="display: flex; align-items: center;">
+          <h2>{{ln.line_id}}</h2>
+          <h5 style="padding-left: 20px;">{{ln.line_descr}}</h5>
+        </div>
+      </ion-item>
+      <ion-item *ngFor="let st of stops;">
+        <ion-card style="width:100%;" class="has-card-footer">
+          <ion-card-header>
+            <ion-card-title>
+              <fa-icon [icon]="busIcon"></fa-icon>
+              {{st.stop_descr}}
+            </ion-card-title>
+            <ion-card-subtitle>{{st.stop_id}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-chip *ngFor="let stln of st.lines">
+              <ion-label>{{stln}}</ion-label>
+            </ion-chip>
+          </ion-card-content>
+          <div class="cardfooter card-content-md">
+            <div class="flex-container">
+              <ion-icon size="large" name="arrow-forward-outline"></ion-icon>
+              <p style="align-self: center; margin-bottom: 0px !important;">{{getdestinationsString(st.destinations)}}</p>
+            </div>
+          </div>
+        </ion-card>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

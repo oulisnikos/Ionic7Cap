@@ -1,0 +1,23 @@
+.card-footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+  
+  .has-card-footer {
+    padding-bottom: 15px;
+  }
+
+  .flex-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .card-content-custom {
+    margin-bottom: 0px !important;
+  }
+
+  .myList {
+    max-height: 350px;
+    overflow-y: scroll;
+  }

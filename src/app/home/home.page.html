@@ -1,0 +1,32 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title size="large">Πλησιέστερες Στάσεις</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item *ngFor="let stop of stopsList">
+        <ion-card style="width:100%;" class="has-card-footer">
+          <ion-card-header>
+            <ion-card-title>
+              <fa-icon [icon]="busIcon"></fa-icon>
+              <h4>{{stop.stop_descr}}</h4>
+            </ion-card-title>
+            <ion-card-subtitle>{{stop.stop_code}}</ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-chip *ngFor="let line of stop.lines">
+              <ion-label>{{line}}</ion-label>
+            </ion-chip>
+          </ion-card-content>
+          <div class="cardfooter card-content-md">
+            <div class="flex-container">
+              <ion-icon size="large" name="arrow-forward-outline"></ion-icon>
+              <p style="align-self: center; margin-bottom: 0px !important;">{{getdestinationsString(stop.destinations)}}</p>
+            </div>
+          </div>
+        </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>
